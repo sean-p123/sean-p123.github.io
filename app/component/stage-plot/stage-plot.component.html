@@ -1,0 +1,205 @@
+<div class="new-container">
+  <div class="select-options">
+  <div class="instrument-options">
+    <label>Select Instrument:</label>  
+  <select class="select-instrument" [(ngModel)]="selectedInstrument.singer" (change)="onInstrumentSelected2($event, 'singer')">
+    <option value="" selected disabled hidden>Singers</option>
+    <option *ngFor="let item of displayData2.singer" [value]="item.name">{{ item.name }}</option>
+  </select>
+<select class="select-instrument" [(ngModel)]="selectedInstrument.mics" (change)="onInstrumentSelected2($event, 'mics')">
+  <option value="" selected disabled hidden>Mics</option>
+  <option *ngFor="let item of displayData2.mics" [value]="item.name">{{ item.name }}</option>
+</select>
+<select class="select-instrument" [(ngModel)]="selectedInstrument.guitars" (change)="onInstrumentSelected2($event, 'guitars')">
+  <option value="" selected disabled hidden>Guitars</option>
+  <option *ngFor="let item of displayData2.strings" [value]="item.name">{{ item.name }}</option>
+</select>
+  <select class="select-instrument" [(ngModel)]="selectedInstrument.drummer" (change)="onInstrumentSelected2($event, 'drums')">
+    <option value="" selected disabled hidden>Drums</option>
+    <option *ngFor="let item of displayData2.drums" [value]="item.name">{{ item.name }}</option>
+  </select>
+  <select class="select-instrument" [(ngModel)]="selectedInstrument.keys" (change)="onInstrumentSelected2($event, 'keys')">
+    <option value="" selected disabled hidden>Keyboards</option>
+    <option *ngFor="let item of displayData2.keyboards" [value]="item.name">{{ item.name }}</option>
+  </select>
+</div>
+<div class="equipment-options">
+  <label>Select Equipment:</label>
+  <select class="select-equipment" [(ngModel)]="selectedEquipment.power" (change)="onInstrumentSelected2($event, 'power')">
+    <option value="" selected disabled hidden>Power</option>
+    <option *ngFor="let item of displayData2.power" [value]="item.name">
+      {{item.name}}
+    </option>
+  </select>
+  <select class="select-equipment" [(ngModel)]="selectedEquipment.riser" (change)="onInstrumentSelected2($event, 'riser')">
+    <option value="" selected disabled hidden>Risers</option>
+    <option *ngFor="let item of displayData2.riser" [value]="item.name">
+      {{item.name}}
+    </option>
+  </select>
+  <select class="select-equipment">
+    <option>Equipment</option>
+  </select>
+</div>
+</div>
+</div>
+
+<div class="container">
+  <!-- Dropdowns for selecting instruments -->
+  <div class="drag-item">  
+  <!--
+    <div class="instrument-row">
+    <div  *ngFor="let instrument of instrumentData">
+      <select class="instrument-select" [(ngModel)]="selectedItem" (change)="onInstrumentSelected2($event)">
+        <option [value]="null" disabled selected>Instrument</option>
+        <option >{{ instrument.name }}</option>
+      </select>        
+    </div>
+  </div>
+  -->
+
+  <!--***Works***
+  <div style="display: flex; ">
+  <select style="width: 20%;" [(ngModel)]="selectedItem" (change)="onInstrumentSelected2($event)">
+    <option [value]="null" disabled selected>Singers</option>
+    <option *ngFor="let item of displayData2.singer" [value]="item.name">{{ item.name }}</option>
+  </select>
+  <select style="width: 20%;" [(ngModel)]="selectedItem" (change)="onInstrumentSelected2($event)">
+    <option [value]="null" disabled selected>Mics</option>
+    <option *ngFor="let item of displayData2.mics" [value]="item.name">{{ item.name }}</option>
+  </select>
+  <select style="width: 20%;" [(ngModel)]="selectedItem" (change)="onInstrumentSelected2($event)">
+    <option [value]="null" disabled selected>Drums</option>
+    <option *ngFor="let item of displayData2.drums" [value]="item.name">{{ item.name }}</option>
+  </select>
+  <select style="width: 20%;" [(ngModel)]="selectedItem" (change)="onInstrumentSelected2($event)">
+    <option [value]="null" disabled selected>Guitars</option>
+    <option *ngFor="let item of displayData2.strings" [value]="item.name">{{ item.name }}</option>
+  </select>
+  <select style="width: 20%;" [(ngModel)]="selectedItem" (change)="onInstrumentSelected2($event)">
+    <option [value]="null" disabled selected>Keyboards</option>
+    <option *ngFor="let item of displayData2.keyboards" [value]="item.name">{{ item.name }}</option>
+  </select>
+  </div>
+  -->
+  <!--  
+  <div class="custom-select-container">
+      <select class="instrument-select" style="width: 200px;" [(ngModel)]="selectedItem" (change)="onInstrumentSelected($event)">
+        <option [value]="null" disabled selected>Singers</option>
+        <option *ngFor="let item of singerList" [value]="item.name">{{ item.name }}</option>
+      </select>
+      <select class="instrument-select" [(ngModel)]="selectedItem" (change)="onInstrumentSelected($event)">
+        <option [value]="null" disabled selected>Mics</option>
+        <option *ngFor="let item of micList" [value]="item.name">{{ item.name }}</option>
+      </select>
+      <select class="instrument-select" [(ngModel)]="selectedItem" (change)="onInstrumentSelected($event)">
+        <option [value]="null" disabled selected>Drums</option>
+        <option *ngFor="let item of displayData2.drums" [value]="item.name">{{ item.name }}</option>
+      </select>
+      <select class="instrument-select" [(ngModel)]="selectedItem" (change)="onInstrumentSelected($event)">
+        <option [value]="null" disabled selected>Guitars</option>
+        <option *ngFor="let item of displayData2.strings" [value]="item.name">{{ item.name }}</option>
+      </select>
+      <select class="instrument-select" [(ngModel)]="selectedItem" (change)="onInstrumentSelected($event)">
+        <option [value]="null" disabled selected>Keyboards</option>
+        <option *ngFor="let item of displayData2.keyboards" [value]="item.name">{{ item.name }}</option>
+      </select>
+</div>
+-->
+  <div style="display: flex; flex-direction: row;">
+  
+</div>
+  <!--
+    <mat-form-field>
+      <mat-select placeholder="Singer" [(ngModel)]="selectedItem"  (ngModelChange)="resetDropdown()" (selectionChange)="onInstrumentSelected2($event.value)">
+        <mat-option *ngFor="let singer of singerList" [value]="singer">{{ singer.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Mics" (selectionChange)="onInstrumentSelected2($event.value)">
+        <mat-option *ngFor="let mic of micList" [value]="mic">{{ mic.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Drums" (selectionChange)="onInstrumentSelected2($event.value)">
+        <mat-option *ngFor="let drum of drumList" [value]="drum">{{ drum.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Guitars" (selectionChange)="onInstrumentSelected2($event.value)">
+        <mat-option *ngFor="let guitar of guitarList" [value]="guitar">{{ guitar.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Keyboards" (selectionChange)="onInstrumentSelected2($event.value)">
+        <mat-option *ngFor="let keyboard of keyboardList" [value]="keyboard">{{ keyboard.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+  -->
+</div>
+
+<div >
+  <div style="display: flex; flex-direction: row;">
+  <!-- Drop zone -->
+  <div class="drop-zone">
+    <p>Drop items here</p>
+
+    <!-- Draggable items -->
+    <div
+      *ngFor="let item of droppedItems; let i = index"
+      class="dropped-item"
+      cdkDrag
+      [cdkDragFreeDragPosition]="{ x: item.left, y: item.top }"
+      (cdkDragEnded)="onDragEnd($event, i)"
+      (dblclick)="selectIcon($event, item)" 
+      [style.transform]="item.rotationStyle"
+      
+
+      >
+      <!--[style.transform]=rotate(5deg)
+      style="rotate: {item.rotate};"-->
+      <div style="display: flex;">
+      <div style=" flex-direction: row; padding-right: 25px; padding-top: 25px; cursor: pointer;" *ngIf="item.isSelected"><mat-icon (click)="rotateItem('right', item)">rotate_right</mat-icon></div>
+      <img [src]="item.icon" alt="{{ item.name }}" />
+      <div style="flex-direction: row; padding-left: 25px; padding-top: 25px;" *ngIf="item.isSelected"><mat-icon (click)="rotateItem('left', item)">rotate_left</mat-icon></div>
+    </div>
+   <!-- <span class="dropped-item-text">hello</span> -->
+    </div>
+    <div *ngIf="isSelected" [ngStyle]="{ left: descriptionBox.left + 'px', top: descriptionBox.top + 'px', position: 'absolute' }"
+    style="display: flex; flex-direction: column;"
+    tabindex="0" 
+    (blur)="warnNoSave()"
+    #focusableDiv
+    >
+      <label style="font-size: 11px;">Description for {{selectedItem.name}}</label>
+      <!--<input type="text" [(ngModel)]="selectedItem.description" style="display: flex; flex-direction: row; height: 100px; width: 100px;"><button (click)="saveDescription(selectedItem.description)">Save</button>-->
+      <textarea [(ngModel)]="selectedItem.description"></textarea><button (click)="saveDescription(selectedItem.description)">Save</button>
+    </div>
+  </div>
+  <div class="added-items" style="margin-left: 20px;">
+    <h3>Items in the Box</h3>
+    <ul>
+      <li *ngFor="let item of droppedItems; let i = index">
+        {{ item.name }}
+        <button (click)="removeItem(i)">Remove</button>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+<div>
+<table style="border-collapse: collapse; border: 1px solid black;">
+  <tr >
+  <th style="width: 50px;">ID</th>
+  <th style="width: 150px;">Instruments</th>
+  <th style="width: 250px;">Description</th>
+</tr>
+<tr *ngFor="let item of droppedItems">
+  <td>{{item.droppedId}}</td>
+  <td>{{item.name}}</td>
+  <td>{{item.description}}</td>
+</tr>
+</table>  
+</div>
