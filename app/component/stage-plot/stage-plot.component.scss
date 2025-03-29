@@ -1,0 +1,201 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto;
+  width: 100%;
+}
+.new-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 950px;
+  overflow-x: auto;
+  width: 99%;
+  min-width: 950px;
+  margin: 5px;
+}
+
+.instrument-options{
+  flex-direction: column;
+  width: 70%;
+  border-right: 1px black solid;
+  padding-bottom: 1px;
+  padding-left: 2px;
+}
+.select-options{
+  flex-direction: row; 
+  display: flex;
+  border: 1px black solid;
+}
+.select-instrument{
+  width: 150px;
+  flex-direction: row;
+  min-width: fit-content;
+}
+.equipment-options{
+  flex-direction: row;
+//  border: 1px black solid;
+  padding-left: 2px;
+}
+
+label{
+  display: flex; 
+  flex-direction: column;
+}
+.select-equipment{
+  width: 150px;
+  flex-direction: row;
+  min-width: fit-content;
+}
+
+
+
+
+
+.selectt {
+  height: 25px;
+}
+
+.drop-zone {
+  border: 2px dashed black;
+  width: 800px;
+  height: 500px;
+  padding-bottom: 50px;
+  position: relative;
+  //background-color: #f1f1f1;
+  background-color: white;
+  overflow: hidden; /* Ensure items stay within the zone */
+}
+.instrument-row {
+  width: 100%;
+  display: flex; /* Horizontal layout for children */
+  flex-direction: row; /* Ensure horizontal alignment */
+  //align-items: center; /* Align items vertically within the row */
+  gap: 10px; /* Space between dropdowns */
+  flex-wrap: nowrap; /* Prevent wrapping of items to the next line */
+}
+
+.instrument-select {
+  width: 200px; /* Adjust dropdown width */
+}
+
+.dropped-item {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  //background-color: #f1f1f1;
+  background-color: transparent;
+  //border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: grab;
+  position: absolute; /* Allows free dragging */
+}
+
+.dropped-item-text {
+  background-color: yellow;
+  // visibility: hidden;
+  // width: 120px;
+  // background-color: black;
+  // color: #fff;
+  // text-align: center;
+  // padding: 5px 0;
+  // border-radius: 6px;
+ 
+  // /* Position the tooltip text - see examples below! */
+  // position: absolute;
+  // z-index: 1;
+}
+
+.dropped-item:hover .dropped-item-text {
+  visibility: visible;
+}
+.dropped-item:hover { 
+  background-color: yellow;
+}
+/* Styling the container for better layout */
+// .custom-select-container {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 8px;
+//   max-width: 200px;
+//}
+
+/* Style the label */
+.custom-select-container label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Styling the select dropdown */
+.custom-select-container select {
+  appearance: none; /* Remove default browser styling */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 8px 12px; /* Add spacing inside */
+  font-size: 14px;
+  background-color: #fff; /* White background */
+  color: #333; /* Text color */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  transition: all 0.2s ease;
+  width: 500px;
+}
+
+/* Add a custom arrow to the select */
+.custom-select-container select {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"><path fill="%23333" d="M0 0l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px;
+}
+
+/* Hover effect */
+.custom-select-container select:hover {
+  border-color: #888; /* Highlight on hover */
+}
+
+/* Focus effect */
+.custom-select-container select:focus {
+  outline: none; /* Remove default outline */
+  border-color: #555; /* Highlight border on focus */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Disabled state */
+.custom-select-container select:disabled {
+  background-color: #f5f5f5; /* Greyed out background */
+  color: #999; /* Faded text color */
+  cursor: not-allowed; /* Not-allowed cursor */
+}
+
+.added-items h3 {
+  margin-top: 0;
+}
+
+.added-items ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.added-items li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.added-items li button {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
