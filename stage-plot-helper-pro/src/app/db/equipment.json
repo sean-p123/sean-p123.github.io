@@ -1,0 +1,23 @@
+[
+    {
+      "id": 1,
+      "name": "Power Triangle",
+      "description": "",
+      "category": "power",
+      "icon": "powertriangle                                           "
+    },
+    {
+      "id": 2,
+      "name": "Riser 6x6",
+      "description": "",
+      "category": "riser",
+      "icon": "riser66                                                         "
+    },
+    {
+      "id": 3,
+      "name": "Riser 8x8",
+      "description": "",
+      "category": "riser",
+      "icon": "riser88"
+    }
+   ]

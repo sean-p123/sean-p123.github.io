@@ -1,0 +1,79 @@
+[
+    {
+      "instrument_id": 1,
+      "name": "Drum-Double-kick",
+      "category": "percussion",
+      "description": "A double kick drum set",
+      "icon": "doublekick"
+    },
+    {
+      "instrument_id": 2,
+      "name": "Drum-Three-toms",
+      "category": "percussion",
+      "description": "A drum set with three toms",
+      "icon": "ThreeToms"
+    },
+    {
+      "instrument_id": 3,
+      "name": "Drum-Four-toms",
+      "category": "percussion",
+      "description": "A drum set with four toms",
+      "icon": "FourToms   "
+    },
+    {
+      "instrument_id": 4,
+      "name": "Microphone",
+      "category": "mics",
+      "description": "A standard boom microphone",
+      "icon": "Boom57               "
+    },
+    {
+      "instrument_id": 5,
+      "name": "Microphone-2",
+      "category": "mics",
+      "description": "A secondary boom microphone",
+      "icon": "Boom57            "
+    },
+    {
+      "instrument_id": 6,
+      "name": "Bass Guitar",
+      "category": "string",
+      "description": "A bass guitar for low tones",
+      "icon": "Beguitarist      "
+    },
+    {
+      "instrument_id": 7,
+      "name": "Guitar",
+      "category": "string",
+      "description": "A standard six-string guitar",
+      "icon": "Guitarist            "
+    },
+    {
+      "instrument_id": 8,
+      "name": "Singer",
+      "category": "wind",
+      "description": "A vocalist with a microphone",
+      "icon": "Man1                   "
+    },
+    {
+      "instrument_id": 9,
+      "name": "Singer2",
+      "category": "wind",
+      "description": "Another vocalist with a microphone",
+      "icon": "Man1            "
+    },
+    {
+      "instrument_id": 10,
+      "name": "Double Key",
+      "category": "keyboard",
+      "description": "A keyboard with dual keys",
+      "icon": "doublekey        "
+    },
+    {
+      "instrument_id": 11,
+      "name": "Grand Piano",
+      "category": "keyboard",
+      "description": "A classic grand piano",
+      "icon": "grandpiano1L"
+    }
+   ]

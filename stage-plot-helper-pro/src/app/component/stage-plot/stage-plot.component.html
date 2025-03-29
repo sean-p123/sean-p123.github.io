@@ -149,22 +149,33 @@
     <!-- Draggable items -->
     <div
       *ngFor="let item of droppedItems; let i = index"
-      class="dropped-item"
-      cdkDrag
-      [cdkDragFreeDragPosition]="{ x: item.left, y: item.top }"
-      (cdkDragEnded)="onDragEnd($event, i)"
-      (dblclick)="selectIcon($event, item)" 
-      [style.transform]="item.rotationStyle"
+      
       
 
       >
+      <!--
+      <div style=" flex-direction: row; padding-right: 25px; padding-top: 25px; cursor: pointer;  position: absolute;"
+      [style.left]="item.left - 125 + 'px'" [style.top]="item.top + 25 + 'px'" *ngIf="item.isSelected">
+      <mat-icon (click)="rotateItem('right', item)">rotate_right</mat-icon></div>
+    -->
+      <div class="dropped-item"
+      cdkDrag
+      [class.selected]="isSelected" 
+      [cdkDragDisabled]="isSelected"
+      [cdkDragFreeDragPosition]="{ x: item.left, y: item.top }"
+      (cdkDragEnded)="onDragEnd($event, i, item)"
+      (dblclick)="selectIcon($event, item)" 
+     >
       <!--[style.transform]=rotate(5deg)
       style="rotate: {item.rotate};"-->
-      <div style="display: flex;">
-      <div style=" flex-direction: row; padding-right: 25px; padding-top: 25px; cursor: pointer;" *ngIf="item.isSelected"><mat-icon (click)="rotateItem('right', item)">rotate_right</mat-icon></div>
+      <div style="display: flex;"  [style.transform]="item.rotationStyle" >
       <img [src]="item.icon" alt="{{ item.name }}" />
-      <div style="flex-direction: row; padding-left: 25px; padding-top: 25px;" *ngIf="item.isSelected"><mat-icon (click)="rotateItem('left', item)">rotate_left</mat-icon></div>
     </div>
+    </div>
+    <!--<div style="flex-direction: row; left: 25px; top: 25px;  position: absolute;" 
+    [style.left]="item.left + 100 + 'px'" [style.top]="item.top + 70 + 'px'" *ngIf="item.isSelected">
+    <mat-icon (click)="rotateItem('left', item)">rotate_left</mat-icon></div>
+  -->
    <!-- <span class="dropped-item-text">hello</span> -->
     </div>
     <div *ngIf="isSelected" [ngStyle]="{ left: descriptionBox.left + 'px', top: descriptionBox.top + 'px', position: 'absolute' }"
@@ -173,9 +184,24 @@
     (blur)="warnNoSave()"
     #focusableDiv
     >
+     
       <label style="font-size: 11px;">Description for {{selectedItem.name}}</label>
-      <!--<input type="text" [(ngModel)]="selectedItem.description" style="display: flex; flex-direction: row; height: 100px; width: 100px;"><button (click)="saveDescription(selectedItem.description)">Save</button>-->
-      <textarea [(ngModel)]="selectedItem.description"></textarea><button (click)="saveDescription(selectedItem.description)">Save</button>
+        <!-- Flex container for buttons and textarea -->
+  <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+
+    <!-- Rotate Left Button -->
+    <button style="flex-direction: row;"><mat-icon (click)="rotateItem('right')">rotate_right</mat-icon></button>
+
+    <!-- Textarea for Description -->
+    <textarea [(ngModel)]="selectedItem.description"></textarea>
+
+   
+    <!-- Rotate Right Button -->
+    <button style="flex-direction: row;"><mat-icon (click)="rotateItem('left')">rotate_left</mat-icon></button>
+  </div>
+   <!-- Save Button -->
+   <button (click)="saveDescription(selectedItem.description)">Save</button>
+
     </div>
   </div>
   <div class="added-items" style="margin-left: 20px;">

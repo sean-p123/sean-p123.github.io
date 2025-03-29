@@ -95,6 +95,10 @@ label{
   position: absolute; /* Allows free dragging */
 }
 
+/* New class to change the cursor to 'not-allowed' when selected */
+.dropped-item.selected {
+  cursor: not-allowed; /* Cursor when isSelected is true */
+}
 .dropped-item-text {
   background-color: yellow;
   // visibility: hidden;

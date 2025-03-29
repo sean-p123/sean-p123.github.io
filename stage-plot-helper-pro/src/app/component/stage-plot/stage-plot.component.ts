@@ -4,6 +4,9 @@ import { Instruments } from 'src/app/types/instruments';
 import { InstrumentType } from 'src/app/types/instruments';
 import { Instrument, InstrumentsService } from 'src/app/services/instruments.service';
 import { EquipmentService, Equipment } from 'src/app/services/equipment.service';
+//import { instruments } from '../../db/instruments.json' 
+import instruments from "../../db/instruments.json";
+import equipment from "../../db/equipment.json";
 @Component({
   selector: 'app-stage-plot',
   templateUrl: './stage-plot.component.html',
@@ -88,17 +91,24 @@ export class StagePlotComponent {
     rotationAngle: number
    }[] = [];
   //add an input box next to the selected item
-  descriptionBox: {description:string, top:number, left:number} = {description:'', top:0, left:0}
+  descriptionBox: {iconId:number; description:string, top:number, left:number} = {iconId: -1, description:'', top:0, left:0}
 
   instrumentData: Instrument[] = []
   isSelected:boolean = false;
   itemId:number = 1;
-  selectedItem: any;
+  selectedItem: any = null;
 
 
   constructor(private instrumentsService: InstrumentsService, 
     private equipmentService: EquipmentService
   ){
+
+    console.log(equipment);
+    console.log(instruments);
+    
+    // fetch('frontend\stage-plot-helper-pro\src\app\db\instruments.json').then(response => response.json())
+    // .then(data => console.log(data))  // Use this data in your frontend
+    //.catch(error => console.error("Error loading data:", error));
     this.selectedInstrument = {
       singer: '',
       drummer: '',
@@ -191,72 +201,151 @@ export class StagePlotComponent {
         })
           */
       })
-      data.forEach(instrument=>{
-        console.log(instrument)
-        switch (instrument.category){
-          case "keyboard":
-            this.displayData2.keyboards.push({
-              instrument_id: instrument.instrument_id,
-              name: instrument.name,
-              description: instrument.description,
-              icon:  './assets/img/' + instrument.icon + '.png',
-              category: instrument.category
-            })
-            break;
-          case "percussion":
-            this.displayData2.drums.push({
-              instrument_id: instrument.instrument_id,
-              name: instrument.name,
-              description: instrument.description,
-              icon:  './assets/img/' + instrument.icon + '.png',
-              category: instrument.category
-            })
-            break;
-          case "mics":
-            this.displayData2.mics.push({
-              instrument_id: instrument.instrument_id,
-              name: instrument.name,
-              description: instrument.description,
-              icon:  './assets/img/' + instrument.icon + '.png',
-              category: instrument.category
-            });
-            break;
-          case "string":
-            this.displayData2.strings.push({
-              instrument_id: instrument.instrument_id,
-              name: instrument.name,
-              description: instrument.description,
-              icon:  './assets/img/' + instrument.icon + '.png',
-              category: instrument.category
-            });
-            break;
-          case "wind":
-            this.displayData2.singer.push({
-              instrument_id: instrument.instrument_id,
-              name: instrument.name,
-              description: instrument.description,
-              icon:  './assets/img/' + instrument.icon + '.png',
-              category: instrument.category
-            });
-            break;
-        }
-      })
-      this.equipmentService.getEquipment().subscribe((data)=>{
-        data.forEach(element=>{
-          console.log(element)
-          switch(element.category){
-            case "power":
-              this.displayData2.power.push(element)
-              break;
-            case "riser":
-              this.displayData2.riser.push(element);
-            }
-        })
-      })
+      
+      // data.forEach(instrument=>{
+      //   console.log(instrument)
+      //   switch (instrument.category){
+      //     case "keyboard":
+      //       this.displayData2.keyboards.push({
+      //         instrument_id: instrument.instrument_id,
+      //         name: instrument.name,
+      //         description: instrument.description,
+      //         icon:  './assets/img/' + instrument.icon + '.png',
+      //         category: instrument.category
+      //       })
+      //       break;
+      //     case "percussion":
+      //       this.displayData2.drums.push({
+      //         instrument_id: instrument.instrument_id,
+      //         name: instrument.name,
+      //         description: instrument.description,
+      //         icon:  './assets/img/' + instrument.icon + '.png',
+      //         category: instrument.category
+      //       })
+      //       break;
+      //     case "mics":
+      //       this.displayData2.mics.push({
+      //         instrument_id: instrument.instrument_id,
+      //         name: instrument.name,
+      //         description: instrument.description,
+      //         icon:  './assets/img/' + instrument.icon + '.png',
+      //         category: instrument.category
+      //       });
+      //       break;
+      //     case "string":
+      //       this.displayData2.strings.push({
+      //         instrument_id: instrument.instrument_id,
+      //         name: instrument.name,
+      //         description: instrument.description,
+      //         icon:  './assets/img/' + instrument.icon + '.png',
+      //         category: instrument.category
+      //       });
+      //       break;
+      //     case "wind":
+      //       this.displayData2.singer.push({
+      //         instrument_id: instrument.instrument_id,
+      //         name: instrument.name,
+      //         description: instrument.description,
+      //         icon:  './assets/img/' + instrument.icon + '.png',
+      //         category: instrument.category
+      //       });
+      //       break;
+      //   }
+      // })
+      // this.equipmentService.getEquipment().subscribe((data)=>{
+      //   data.forEach(element=>{
+      //     console.log(element)
+      //     switch(element.category){
+      //       case "power":
+      //         this.displayData2.power.push({
+      //           id: element.id,
+      //           description: element.description,
+      //           category: element.category,
+      //           name: element.name,
+      //           icon: element.icon
+      //         })
+      //         break;
+      //       case "riser":
+      //         this.displayData2.riser.push(element);
+      //       }
+      //   })
+      // })
       console.log(this.displayData2);
     });
 
 
+    instruments.forEach(instrument => {
+      switch (instrument.category){
+        case "keyboard":
+          this.displayData2.keyboards.push({
+            instrument_id: instrument.instrument_id,
+            name: instrument.name,
+            description: instrument.description,
+            icon:  './assets/img/' + instrument.icon + '.png',
+            category: instrument.category
+          })
+          break;
+        case "percussion":
+          this.displayData2.drums.push({
+            instrument_id: instrument.instrument_id,
+            name: instrument.name,
+            description: instrument.description,
+            icon:  './assets/img/' + instrument.icon + '.png',
+            category: instrument.category
+          })
+          break;
+        case "mics":
+          this.displayData2.mics.push({
+            instrument_id: instrument.instrument_id,
+            name: instrument.name,
+            description: instrument.description,
+            icon:  './assets/img/' + instrument.icon + '.png',
+            category: instrument.category
+          });
+          break;
+        case "string":
+          this.displayData2.strings.push({
+            instrument_id: instrument.instrument_id,
+            name: instrument.name,
+            description: instrument.description,
+            icon:  './assets/img/' + instrument.icon + '.png',
+            category: instrument.category
+          });
+          break;
+        case "wind":
+          this.displayData2.singer.push({
+            instrument_id: instrument.instrument_id,
+            name: instrument.name,
+            description: instrument.description,
+            icon:  './assets/img/' + instrument.icon + '.png',
+            category: instrument.category
+          });
+          break;
+      }
+    });
+
+      equipment.forEach(element=>{
+        console.log(element)
+        switch(element.category){
+          case "power":
+            this.displayData2.power.push({
+              id: element.id,
+              description: element.description,
+              category: element.category,
+              name: element.name,
+              icon: element.icon
+            })
+            break;
+          case "riser":
+            this.displayData2.riser.push({
+               id: element.id,
+              description: element.description,
+              category: element.category,
+              name: element.name,
+              icon: element.icon
+            });
+          }
+    })
   }
   //displayData: Instruments[];
   
@@ -356,10 +445,12 @@ export class StagePlotComponent {
   */
  }
   // Update position when dragging ends
-  onDragEnd(event: any, index: number) {
+  onDragEnd(event: any, index: number, element:any) {
+    console.log(event);
     const position = event.source.getFreeDragPosition();
     this.droppedItems[index].top = position.y;
     this.droppedItems[index].left = position.x;
+    this.droppedItems[index].rotationStyle = element.rotationStyle;
   }
 
 
@@ -371,10 +462,12 @@ selectIcon(event: MouseEvent, selectedItem:any) {
   this.isSelected = !this.isSelected;
   console.log(selectedItem);
   console.log(this.selectedItem);
+  this.selectedItem = selectedItem;
   selectedItem.isSelected = true;
   this.selectedItem = {...selectedItem};
   this.descriptionBox.left = selectedItem.left //+ 150;
   this.descriptionBox.top = selectedItem.top - 50;
+  this.descriptionBox.iconId = selectedItem.droppedId;
   //this.descriptionBox.description == selectedItem.description;
   if (this.isSelected && this.focusableDiv) {
     this.focusableDiv.nativeElement.focus(); // Programmatically focus on the div
@@ -419,26 +512,26 @@ onDocumentClick(event: MouseEvent): void {
   }
 }
 
-rotateItem(direction:string, currentElement: any){
+rotateItem(direction:string){
   console.log("Rotate ", direction);
-  const index = this.droppedItems.findIndex(d => d.droppedId == currentElement.droppedId);
+  const index = this.droppedItems.findIndex(d => d.droppedId == this.selectedItem.droppedId);
   console.log(index);
   if(index == -1) return;
   switch(direction){
     case 'left':
-      this.droppedItems[index].rotationAngle += 45;
-      this.droppedItems[index].rotationStyle = `translate(${this.droppedItems[index].left}px,${this.droppedItems[index].top}px) rotate(${this.droppedItems[index].rotationAngle}deg)`;
+      this.droppedItems[index].rotationAngle -= 45;
+      this.droppedItems[index].rotationStyle = `rotate(${this.droppedItems[index].rotationAngle}deg)`;
       // currentElement.rotationAngle += 45;
+      //translate(${this.droppedItems[index].left}px,${this.droppedItems[index].top}px) 
       // currentElement.rotationStyle = `rotate(${currentElement.rotationAngle}deg)`;
       break;
     case 'right':
-      this.droppedItems[index].rotationAngle -= 45;
-      this.droppedItems[index].rotationStyle = `translate(${this.droppedItems[index].left}px,${this.droppedItems[index].top}px) rotate(${this.droppedItems[index].rotationAngle}deg)`;
+      this.droppedItems[index].rotationAngle += 45;
+      this.droppedItems[index].rotationStyle = `rotate(${this.droppedItems[index].rotationAngle}deg)`;
       // currentElement.rotationAngle -= 45;
       // currentElement.rotationStyle = `rotate(${currentElement.rotationAngle}deg)`
       break;
   }
-  console.log(currentElement)
 }
 
 }
